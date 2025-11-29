@@ -1,0 +1,26 @@
+---
+const skills = [
+  "JavaScript",
+  "TypeScript",
+  "React",
+  "Astro",
+  "Node.js",
+  "CSS/Sass",
+  "Git",
+  "SQL",
+  "Docker",
+];
+---
+
+<section id="skills" class="py-16">
+  <h2 class="text-4xl font-bold mb-6">Skills</h2>
+  <ul class="flex flex-wrap gap-4">
+    {
+      skills.map((skill) => (
+        <li class="px-4 py-2 bg-secondary text-secondary-foreground rounded-full font-medium transition-all hover:-translate-y-1 hover:bg-primary hover:text-primary-foreground cursor-default">
+          {skill}
+        </li>
+      ))
+    }
+  </ul>
+</section>

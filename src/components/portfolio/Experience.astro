@@ -1,0 +1,50 @@
+---
+const jobs = [
+  {
+    role: "Senior Frontend Engineer",
+    company: "TechCorp Inc.",
+    period: "2022 - Present",
+    description:
+      "Leading the frontend team in rebuilding the core product using modern frameworks. Improved site performance by 40%.",
+  },
+  {
+    role: "Full Stack Developer",
+    company: "StartUp Lyfe",
+    period: "2019 - 2022",
+    description:
+      "Developed and maintained multiple client-facing web applications. Collaborated closely with design and product teams.",
+  },
+  {
+    role: "Junior Web Developer",
+    company: "Creative Agency",
+    period: "2018 - 2019",
+    description:
+      "Built responsive websites for various clients. Gained proficiency in HTML, CSS, and JavaScript.",
+  },
+];
+---
+
+<section id="experience" class="py-16">
+  <h2 class="text-4xl font-bold mb-8">Experience</h2>
+  <div class="relative border-l-2 border-border ml-3 pl-8 space-y-10">
+    {
+      jobs.map((job) => (
+        <div class="relative">
+          <!-- Marker -->
+          <div class="absolute -left-[2.65rem] top-1.5 h-5 w-5 rounded-full border-4 border-background bg-primary" />
+          
+          <!-- Content -->
+          <div>
+            <h3 class="text-xl font-bold">{job.role}</h3>
+            <span class="block text-sm font-semibold text-muted-foreground mb-2">
+              {job.company} | {job.period}
+            </span>
+            <p class="text-muted-foreground leading-relaxed">
+              {job.description}
+            </p>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>
