@@ -11,10 +11,14 @@ const isActive = href === pathname || href === "/" + (subpath?.[0] || "");
 
 <a
   href={href}
+  data-nav-link
   class:list={[
-    "inline-flex items-center text-base font-medium text-muted-foreground transition-colors hover:text-foreground",
+    "text-muted-foreground hover:text-foreground inline-flex items-center text-base font-medium transition-colors",
     className,
-    { "text-foreground font-bold underline decoration-primary underline-offset-4": isActive },
+    {
+      "text-primary decoration-primary underline-primary text-lg! font-bold! underline":
+        isActive,
+    },
   ]}
   {...props}
 >

@@ -24,17 +24,17 @@ const jobs = [
 ];
 ---
 
-<section id="experience" class="py-16">
+<section id="experience" class="py-24" data-aos="fade-up">
   <h2 class="text-4xl font-bold mb-8">Experience</h2>
-  <div class="relative border-l-2 border-border ml-3 pl-8 space-y-10">
+  <div class="relative border-l-2 border-border ml-12 space-y-10">
     {
       jobs.map((job) => (
         <div class="relative">
           <!-- Marker -->
-          <div class="absolute -left-[2.65rem] top-1.5 h-5 w-5 rounded-full border-4 border-background bg-primary" />
+          <div class="absolute -left-[3.65rem] top-1.5 h-5 w-5 rounded-full border-4 border-background bg-primary" />
           
           <!-- Content -->
-          <div>
+          <div class="pl-4">
             <h3 class="text-xl font-bold">{job.role}</h3>
             <span class="block text-sm font-semibold text-muted-foreground mb-2">
               {job.company} | {job.period}

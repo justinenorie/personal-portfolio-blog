@@ -1,39 +1,30 @@
 ---
 import { SITE_TITLE } from "../constants/consts";
 import HeaderLink from "./HeaderLink.astro";
+import ThemeToggle from "./ThemeToggle.astro";
 ---
 
-<header
-  class="border-border bg-background/95 supports-backdrop-filter:bg-background/60 sticky top-0 z-50 w-full border-b backdrop-blur"
->
-  <nav class="container mx-auto flex h-16 items-center justify-between px-4">
-    <div class="flex items-center gap-8">
-      <h2>
-        <a
-          href="/"
-          class="text-foreground hover:text-primary text-lg font-bold tracking-tight transition-colors"
-        >
-          {SITE_TITLE}
-        </a>
-      </h2>
-      <div class="hidden items-center gap-6 md:flex">
-        <HeaderLink href="/#about">About</HeaderLink>
-        <HeaderLink href="/#skills">Skills</HeaderLink>
-        <HeaderLink href="/#experience">Experience</HeaderLink>
-        <HeaderLink href="/#projects">Projects</HeaderLink>
-        <HeaderLink href="/blog">Blog</HeaderLink>
-      </div>
+<header class="sticky top-0 z-50 py-4">
+  <nav
+    class="bg-background/50 supports-backdrop-filter:bg-background/60 border-foreground/20 flex items-center justify-between rounded-lg border px-10 backdrop-blur"
+  >
+    <h2>
+      <a
+        href="/"
+        class="text-foreground hover:text-primary text-lg font-bold tracking-tight transition-colors"
+      >
+        {SITE_TITLE}
+      </a>
+    </h2>
+    <div class="hidden items-center gap-6 md:flex">
+      <HeaderLink href="/">Home</HeaderLink>
+      <!-- TODO: Add a Project Page -->
+      <HeaderLink href="/#projects">Projects</HeaderLink>
+      <HeaderLink href="/blog">Blog</HeaderLink>
+      <ThemeToggle />
     </div>
 
     <!-- TODO: Change this into Hamburger style -->
     <!-- Mobile Nav (Simple horizontal scroll for now) -->
-    <div
-      class="flex flex-1 items-center justify-end gap-4 overflow-x-auto px-2 md:hidden"
-    >
-      <HeaderLink href="/#about">About</HeaderLink>
-      <HeaderLink href="/#projects">Projects</HeaderLink>
-      <HeaderLink href="/blog">Blog</HeaderLink>
-      <!-- Condensed menu for mobile or just show key ones -->
-    </div>
   </nav>
 </header>

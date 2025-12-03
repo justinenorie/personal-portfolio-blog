@@ -1,56 +1,37 @@
-<section class="hero">
-  <div class="hero-content">
-    <h1>Hi, I'm <span>Astronaut</span></h1>
-    <p class="tagline">
-      Building digital experiences with code and creativity.
-    </p>
-    <div class="actions">
-      <a href="#projects" class="btn primary">View My Work</a>
-      <a href="/about" class="btn secondary">More About Me</a>
+<section class="flex justify-center py-24" data-aos="fade-up">
+  <div class="grid grid-cols-1 xl:grid-cols-2">
+    <!-- PERSONAL INFO -->
+    <div class="order-2 space-y-6 text-center xl:order-0 xl:text-left">
+      <p class="text-2xl">Hello, I'm</p>
+
+      <div>
+        <h1>Justine Norie</h1>
+        <h2 class="text-muted-foreground">I build things for web</h2>
+      </div>
+
+      <p class="text-foreground/80">
+        Web React Developer & Multi-Platform App Builder | Hands-on problem
+        solver specializing in modern web, mobile, and desktop systems with
+        strong UI/UX, real-world project development, and end-to-end
+        architecture skills.
+      </p>
+
+      <a
+        href="#projects"
+        class="bg-primary text-primary-foreground hover:bg-primary-foreground hover:text-primary rounded-md px-4 py-2 transition-colors"
+      >
+        View my Projects
+      </a>
+    </div>
+
+    <!-- MY PICTURE -->
+    <div
+      class="relative order-1 mb-8 flex h-full w-full items-center justify-center xl:order-0 xl:mb-0"
+    >
+      <div
+        class="h-[285px] w-[285px] rounded-full bg-blue-500 xl:h-[498px] xl:w-[498px]"
+      >
+      </div>
     </div>
   </div>
 </section>
-
-<style>
-  .hero {
-    padding: 4rem 0;
-    text-align: center;
-  }
-  h1 {
-    font-size: 4em;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-  }
-  h1 span {
-    color: var(--accent);
-  }
-  .tagline {
-    font-size: 1.5em;
-    color: rgb(var(--gray));
-    margin-bottom: 2rem;
-  }
-  .actions {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-  }
-  .btn {
-    display: inline-block;
-    padding: 0.8rem 1.6rem;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: opacity 0.2s;
-  }
-  .btn:hover {
-    opacity: 0.8;
-  }
-  .btn.primary {
-    background-color: var(--accent);
-    color: white;
-  }
-  .btn.secondary {
-    background-color: rgb(var(--gray-light));
-    color: rgb(var(--gray-dark));
-  }
-</style>
