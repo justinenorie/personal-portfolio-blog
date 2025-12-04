@@ -1,0 +1,78 @@
+{
+  "name": "Justine Norie",
+  "shortTerm": "I build things for web",
+  "description": "Web React Developer & Multi-Platform App Builder | Hands-on problem solver specializing in modern web, mobile, and desktop systems with strong UI/UX, real-world project development, and end-to-end architecture skills.",
+
+  "socials": [
+    {
+      "name": "Github",
+      "url": "https://github.com/justinenorie",
+      "icon": "Github"
+    },
+    {
+      "name": "Linkedin",
+      "url": "https://linkedin.com/in/your-username",
+      "icon": "Linkedin"
+    },
+    {
+      "name": "Mail",
+      "url": "mailto:justinedelacruz97@gmail.com",
+      "icon": "Mail"
+    }
+  ],
+  
+  "techStacks": [
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "React",
+    "Node.js",
+    "MongoDB",
+    "Vue.js",
+    "Firebase",
+    "Tailwind CSS",
+    "Rust",
+    "API",
+    "CLI"
+  ],
+  "projects": [
+    {
+      "name": "E-commerce Dashboard",
+      "description": "A comprehensive dashboard for managing online stores, featuring real-time analytics and inventory management.",
+      "link": "https://github.com/justinenorie/e-commerce-dashboard",
+      "tags": ["React", "Node.js", "MongoDB", "Chart.js"]
+    },
+    {
+      "name": "Task Management App",
+      "description": "A collaborative task manager with drag-and-drop functionality and team workspaces.",
+      "link": "https://github.com/justinenorie/task-management-app",
+      "tags": ["Vue.js", "Firebase", "Tailwind CSS"]
+    },
+    {
+      "name": "Weather Forecast CLI",
+      "description": "A command-line tool that provides accurate weather forecasts using a public API.",
+      "link": "https://github.com/justinenorie/weather-forecast-cli",
+      "tags": ["Rust", "API", "CLI"]
+    }
+  ],
+  "experience": [
+    {
+      "role": "Senior Frontend Engineer",
+      "company": "TechCorp Inc.",
+      "period": "2022 - Present",
+      "description": "Leading the frontend team in rebuilding the core product using modern frameworks. Improved site performance by 40%."
+    },
+    {
+      "role": "Full Stack Developer",
+      "company": "StartUp Lyfe",
+      "period": "2019 - 2022",
+      "description": "Developed and maintained multiple client-facing web applications. Collaborated closely with design and product teams."
+    },
+    {
+      "role": "Junior Web Developer",
+      "company": "Creative Agency",
+      "period": "2018 - 2019",
+      "description": "Built responsive websites for various clients. Gained proficiency in HTML, CSS, and JavaScript."
+    }
+  ]
+}

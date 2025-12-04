@@ -6,9 +6,9 @@ import ThemeToggle from "./ThemeToggle.astro";
 
 <header class="sticky top-0 z-50 py-4">
   <nav
-    class="bg-background/50 supports-backdrop-filter:bg-background/60 border-foreground/20 flex items-center justify-between rounded-lg border px-10 backdrop-blur"
+    class="bg-background/50 supports-backdrop-filter:bg-background/60 border-foreground/20 flex items-center justify-between rounded-lg border px-5 py-2 backdrop-blur md:px-10"
   >
-    <h2>
+    <h2 class="flex items-center">
       <a
         href="/"
         class="text-foreground hover:text-primary text-lg font-bold tracking-tight transition-colors"
@@ -19,7 +19,7 @@ import ThemeToggle from "./ThemeToggle.astro";
     <div class="hidden items-center gap-6 md:flex">
       <HeaderLink href="/">Home</HeaderLink>
       <!-- TODO: Add a Project Page -->
-      <HeaderLink href="/#projects">Projects</HeaderLink>
+      <HeaderLink href="/projects">Projects</HeaderLink>
       <HeaderLink href="/blog">Blog</HeaderLink>
       <ThemeToggle />
     </div>

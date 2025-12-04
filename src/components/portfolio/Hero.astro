@@ -1,36 +1,79 @@
-<section class="flex justify-center py-24" data-aos="fade-up">
-  <div class="grid grid-cols-1 xl:grid-cols-2">
+---
+import Button from "../ui/Button.astro";
+import Github from "@lucide/astro/icons/github";
+import Linkedin from "@lucide/astro/icons/linkedin";
+import Mail from "@lucide/astro/icons/mail";
+
+const portfolioData = await import("../../content/portfolio.json");
+
+const iconMap: Record<string, any> = {
+  Github,
+  Linkedin,
+  Mail,
+};
+---
+
+<section class="flex h-screen justify-center" data-aos="fade-up">
+  <div class="grid grid-cols-1 gap-6 xl:grid-cols-2">
     <!-- PERSONAL INFO -->
-    <div class="order-2 space-y-6 text-center xl:order-0 xl:text-left">
+    <div
+      class="order-2 content-center space-y-6 text-center xl:order-0 xl:text-left"
+    >
       <p class="text-2xl">Hello, I'm</p>
 
       <div>
-        <h1>Justine Norie</h1>
-        <h2 class="text-muted-foreground">I build things for web</h2>
+        <h1>{portfolioData.name}</h1>
+        <h3 class="text-muted-foreground">{portfolioData.shortTerm}</h3>
       </div>
 
-      <p class="text-foreground/80">
-        Web React Developer & Multi-Platform App Builder | Hands-on problem
-        solver specializing in modern web, mobile, and desktop systems with
-        strong UI/UX, real-world project development, and end-to-end
-        architecture skills.
-      </p>
+      <p class="text-foreground/80">{portfolioData.description}</p>
 
-      <a
-        href="#projects"
-        class="bg-primary text-primary-foreground hover:bg-primary-foreground hover:text-primary rounded-md px-4 py-2 transition-colors"
-      >
-        View my Projects
-      </a>
+      <div class="flex flex-col items-center gap-4 xl:flex-row">
+        <!-- TODO: Add a download pdf here -->
+        <Button href="#" text="Download CV" variant="outline" />
+        <div class="flex gap-4">
+          {
+            portfolioData.socials &&
+              portfolioData.socials.map((social) => {
+                const IconComponent = iconMap[social.icon];
+                return (
+                  <div class="border-primary hover:bg-primary hover:text-primary-foreground rounded-full border-2 p-2 transition-all duration-500 hover:scale-130">
+                    <a
+                      href={social.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Link to my ${social.name}`}
+                    >
+                      {IconComponent ? <IconComponent /> : social.name}
+                    </a>
+                  </div>
+                );
+              })
+          }
+        </div>
+      </div>
     </div>
 
     <!-- MY PICTURE -->
     <div
-      class="relative order-1 mb-8 flex h-full w-full items-center justify-center xl:order-0 xl:mb-0"
+      class="relative order-1 flex h-full w-full items-center justify-center xl:order-0"
     >
+      <!-- Blurred glow circle -->
       <div
-        class="h-[285px] w-[285px] rounded-full bg-blue-500 xl:h-[498px] xl:w-[498px]"
+        class="pointer-events-none absolute inset-0 flex items-center justify-center"
       >
+        <div
+          class="h-[285px] w-[285px] rounded-full bg-blue-500/30 blur-3xl xl:h-[498px] xl:w-[498px]"
+        >
+        </div>
+      </div>
+
+      <!-- Your actual content goes here -->
+      <div class="relative z-10">
+        <div
+          class="h-[265px] w-[265px] rounded-full border border-neutral-700 bg-neutral-900/80 xl:h-[488px] xl:w-[488px]"
+        >
+        </div>
       </div>
     </div>
   </div>
