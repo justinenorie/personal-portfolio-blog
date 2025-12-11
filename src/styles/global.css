@@ -124,8 +124,6 @@
   --color-primary: var(--primary);
   --color-popover-foreground: var(--popover-foreground);
   --color-popover: var(--popover);
-  --color-card-foreground: var(--card-foreground);
-  --color-card: var(--card);
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -141,7 +139,7 @@
   --foreground: var(--color-TEXTdark);
 
   /* Surfaces */
-  --card: var(--color-PRIMARY-50);
+  --card: #E8E9E8;
   --card-foreground: var(--color-TEXTdark);
   --popover: var(--color-BGlight);
   --popover-foreground: var(--color-TEXTdark);
@@ -164,7 +162,7 @@
   --destructive-foreground: var(--color-TEXTlight);
 
   /* UI controls */
-  --border: var(--color-PRIMARY-200);
+  --border: var(--color-PRIMARY-300);
   --input: var(--color-PRIMARY-100);
   --ring: var(--color-PRIMARY-400);
 
@@ -185,7 +183,7 @@
   --foreground: var(--color-TEXTlight);
 
   /* Surfaces */
-  --card: var(--color-PRIMARY-900);
+  --card: #1A1F25;
   --card-foreground: var(--color-TEXTlight);
   --popover: var(--color-BGdark);
   --popover-foreground: var(--color-TEXTlight);
@@ -227,11 +225,8 @@
   html {
     /* scroll-behavior: smooth; -- Removed to prevent refresh scroll drift */
   }
-  * {
-    @apply border-border outline-ring/50;
-  }
   body {
-    @apply bg-background text-foreground font-body overflow-x-hidden;
+    @apply bg-background overflow-x-hidden transition-all duration-500;
   }
   header {
     @apply px-4 md:px-12 lg:px-30 xl:px-50;
@@ -239,31 +234,23 @@
   section {
     @apply w-full px-4 py-5 md:px-12 md:py-10 lg:px-30 xl:px-50;
   }
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    @apply font-title text-foreground font-bold;
-  }
   h1 {
-    @apply text-4xl md:text-5xl lg:text-6xl;
+    @apply font-title text-4xl text-foreground md:text-5xl lg:text-6xl ;
   }
   h2 {
-    @apply text-3xl md:text-4xl;
+    @apply font-title text-3xl text-foreground md:text-4xl;
   }
   h3 {
-    @apply text-2xl md:text-3xl;
+    @apply font-title text-2xl text-foreground md:text-3xl;
   }
   h4 {
-    @apply text-xl md:text-2xl;
+    @apply font-title text-xl text-foreground md:text-2xl;
   }
   h5 {
-    @apply text-lg md:text-xl;
+    @apply font-title text-lg text-foreground md:text-xl;
   }
   h6 {
-    @apply text-base md:text-lg;
+    @apply font-title text-base text-foreground md:text-lg;
   }
   p {
     @apply font-body text-foreground text-base;

@@ -3,6 +3,7 @@ import Button from "../ui/Button.astro";
 import Github from "@lucide/astro/icons/github";
 import Linkedin from "@lucide/astro/icons/linkedin";
 import Mail from "@lucide/astro/icons/mail";
+import Download from "@lucide/astro/icons/download";
 
 const portfolioData = await import("../../content/portfolio.json");
 
@@ -22,7 +23,7 @@ const iconMap: Record<string, any> = {
       <p class="text-2xl">Hello, I'm</p>
 
       <div>
-        <h1>{portfolioData.name}</h1>
+        <h1 class="text-foreground">{portfolioData.name}</h1>
         <h3 class="text-muted-foreground">{portfolioData.shortTerm}</h3>
       </div>
 
@@ -30,14 +31,21 @@ const iconMap: Record<string, any> = {
 
       <div class="flex flex-col items-center gap-4 xl:flex-row">
         <!-- TODO: Add a download pdf here -->
-        <Button href="#" text="Download CV" variant="outline" />
+        <Button
+          href="#"
+          text="Download CV"
+          variant="outline"
+          class="flex flex-row gap-2"
+        >
+          <Download />
+        </Button>
         <div class="flex gap-4">
           {
             portfolioData.socials &&
               portfolioData.socials.map((social) => {
                 const IconComponent = iconMap[social.icon];
                 return (
-                  <div class="border-primary hover:bg-primary hover:text-primary-foreground rounded-full border-2 p-2 transition-all duration-500 hover:scale-130">
+                  <div class="border-primary hover:bg-primary text-foreground hover:text-primary-foreground rounded-full border-2 p-2 transition-all duration-500 hover:scale-130">
                     <a
                       href={social.url}
                       target="_blank"

@@ -1,12 +1,12 @@
 ---
-import { SITE_TITLE } from "../constants/consts";
+import { SITE_TITLE } from "../../constants/consts";
 import HeaderLink from "./HeaderLink.astro";
 import ThemeToggle from "./ThemeToggle.astro";
 ---
 
 <header class="sticky top-0 z-50 py-4">
   <nav
-    class="bg-background/50 supports-backdrop-filter:bg-background/60 border-foreground/20 flex items-center justify-between rounded-lg border px-5 py-2 backdrop-blur md:px-10"
+    class="bg-background/50 supports-backdrop-filter:bg-background/60 border-foreground/20 flex items-center justify-between rounded-lg border px-5 py-2 backdrop-blur transition-all duration-500 md:px-10"
   >
     <h2 class="flex items-center">
       <a

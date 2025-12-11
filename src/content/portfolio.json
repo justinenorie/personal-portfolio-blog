@@ -1,8 +1,8 @@
 {
   "name": "Justine Norie",
   "shortTerm": "I build things for web",
-  "description": "Web React Developer & Multi-Platform App Builder | Hands-on problem solver specializing in modern web, mobile, and desktop systems with strong UI/UX, real-world project development, and end-to-end architecture skills.",
-
+  "description": "Web React Developer & Multi-Platform App Builder, Hands-on problem solver specializing in modern web, mobile, and desktop systems with strong UI/UX, real-world project development, and end-to-end architecture skills.",
+  "bio": "I am a dedicated software engineer with a focus on system architecture and design. I thrive on building scalable, efficient, and robust systems that solve real-world problems. My approach involves deep analysis of requirements, careful selection of technologies, and a commitment to best practices in coding and deployment. Whether it's a complex web platform or a high-performance backend service, I aim for architectural excellence.",
   "socials": [
     {
       "name": "Github",
@@ -20,7 +20,18 @@
       "icon": "Mail"
     }
   ],
-  
+
+
+  "block1":"I am a Developer who designs software architectures, builds dependable and user-focused for web applications",
+  "education": [
+    {
+      "top_description":"4th Year College student",
+      "degree": "Bachelor of Science in Information Technology",
+      "institution": "Colegio De Montalban",
+      "year": "2022-2026",
+      "description": "Specialized in Software Architecture"
+    }
+  ],
   "techStacks": [
     "HTML",
     "CSS",
@@ -35,39 +46,17 @@
     "API",
     "CLI"
   ],
+
+  
   "projects": [
     {
       "name": "E-commerce Dashboard",
       "description": "A comprehensive dashboard for managing online stores, featuring real-time analytics and inventory management.",
-      "link": "https://github.com/justinenorie/e-commerce-dashboard",
+      "link": "https://github.com/justinenorie",
       "tags": ["React", "Node.js", "MongoDB", "Chart.js"]
-    },
-    {
-      "name": "Task Management App",
-      "description": "A collaborative task manager with drag-and-drop functionality and team workspaces.",
-      "link": "https://github.com/justinenorie/task-management-app",
-      "tags": ["Vue.js", "Firebase", "Tailwind CSS"]
-    },
-    {
-      "name": "Weather Forecast CLI",
-      "description": "A command-line tool that provides accurate weather forecasts using a public API.",
-      "link": "https://github.com/justinenorie/weather-forecast-cli",
-      "tags": ["Rust", "API", "CLI"]
     }
   ],
   "experience": [
-    {
-      "role": "Senior Frontend Engineer",
-      "company": "TechCorp Inc.",
-      "period": "2022 - Present",
-      "description": "Leading the frontend team in rebuilding the core product using modern frameworks. Improved site performance by 40%."
-    },
-    {
-      "role": "Full Stack Developer",
-      "company": "StartUp Lyfe",
-      "period": "2019 - 2022",
-      "description": "Developed and maintained multiple client-facing web applications. Collaborated closely with design and product teams."
-    },
     {
       "role": "Junior Web Developer",
       "company": "Creative Agency",

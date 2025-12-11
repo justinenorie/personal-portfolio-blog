@@ -1,16 +1,128 @@
+---
+import { Image } from "astro:assets";
+import DFD_sample from "../../assets/html.jpeg";
+import TechStacks from "../ui/TechStacks.astro";
+
+const portfolioData = await import("../../content/portfolio.json");
+---
+
 <section id="about" class="py-24" data-aos="fade-up">
-  <h2 class="mb-4 text-4xl font-bold">About Me</h2>
-  <div
-    class="text-muted-foreground max-w-3xl space-y-4 text-lg leading-relaxed"
-  >
-    <p>
-      I am a passionate developer with a love for clean code and intuitive
-      design. With a background in computer science and years of hands-on
-      experience, I specialize in building scalable web applications.
-    </p>
-    <p>
-      When I'm not coding, you can find me exploring the outdoors, reading
-      sci-fi novels, or experimenting with new recipes in the kitchen.
-    </p>
+  <div class="space-y-10">
+    <!-- Headline -->
+    <div class="flex flex-col gap-4 text-center">
+      <h2>Things you need to know about me</h2>
+
+      <p>
+        A quick snapshot of who I am, what I build, and what I’m currently
+        focused on.
+      </p>
+    </div>
+
+    <!-- GRID CARDS -->
+    <div class="grid grid-cols-1 gap-4 md:grid-cols-5 md:grid-rows-4">
+      <!-- Specialization Box -->
+      <div
+        class="border-border/50 bg-card group relative overflow-hidden rounded-2xl border shadow-lg md:col-span-3 md:row-span-2"
+      >
+        <Image
+          src={DFD_sample}
+          alt="System design diagram"
+          class="absolute inset-0 h-full w-full object-cover opacity-80 blur-xs transition-transform duration-700 ease-out group-hover:scale-110"
+        />
+        <div
+          class="from-background via-background/60 absolute inset-0 bg-linear-to-t to-transparent"
+        >
+        </div>
+        <div class="relative flex h-full max-w-2xl items-end p-6">
+          <h3>
+            {portfolioData.block1}
+          </h3>
+        </div>
+      </div>
+
+      <!-- College Degree Box -->
+      <div
+        class="border-border/50 bg-card group flex flex-col justify-center space-y-2 rounded-2xl border p-6 shadow-lg md:col-span-2 md:row-span-1"
+      >
+        <p class="text-muted-foreground uppercase">
+          {portfolioData.education[0].top_description}
+        </p>
+        <h4>
+          {portfolioData.education[0].degree}
+        </h4>
+        <h6>
+          {portfolioData.education[0].institution}
+        </h6>
+
+        <small>
+          {portfolioData.education[0].description}
+        </small>
+      </div>
+
+      <div
+        class="border-border/50 bg-card group flex flex-col justify-center space-y-2 rounded-2xl border p-6 shadow-lg md:col-span-2 md:row-span-1"
+      >
+        <h4>Open for work</h4>
+      </div>
+
+      <div
+        class="border-border/50 bg-card group flex flex-col justify-center space-y-2 rounded-2xl border p-6 shadow-lg md:col-span-2 md:row-span-1"
+      >
+        <h4>Info 1</h4>
+      </div>
+
+      <!-- Tech Stacks -->
+      <div
+        class="border-border/50 rounded-2xl border p-6 shadow-lg md:col-span-3 md:row-span-2"
+      >
+        <div>
+          <h4>Skills and Tools</h4>
+          <p>The tools and technologies that I have experience with:</p>
+        </div>
+        <div class="grid grid-cols-3 gap-4 pt-2">
+          <TechStacks />
+        </div>
+      </div>
+
+      <div
+        class="border-border/50 bg-card group flex flex-col justify-center space-y-2 rounded-2xl border p-6 shadow-lg md:col-span-2 md:row-span-1"
+      >
+        <h4>Info 2</h4>
+      </div>
+
+      <!--
+        This is a multi-line comment in Astro/HTML.
+        You can use the HTML comment syntax to comment out multiple lines of code.
+
+        <article class="border-border; bg-card rounded-2xl border p-6 shadow-lg">
+        <p class="text-muted-foreground text-xs tracking-[0.2em] uppercase">
+          The Longer Story
+        </p>
+      </article>
+        
+
+       <article class="border-border bg-card rounded-2xl border p-6 shadow-lg">
+        <p class="text-muted-foreground text-xs tracking-[0.2em] uppercase">
+          My primary tech stack
+        </p>
+        <h3 class="mt-3 text-lg font-semibold">
+          Modern web & multi-platform tools
+        </h3>
+
+        <div class="mt-4 flex flex-wrap gap-2">
+          {
+            portfolioData.techStacks
+              .slice(0, 10)
+              .map((tech) => (
+                <span class="border-border bg-background/60 text-foreground/90 cursor-default rounded-full border px-3 py-1 text-xs font-medium">
+                  {tech}
+                </span>
+              ))
+          }
+        </div>
+      </article>
+        
+      -->
+    </div>
   </div>
 </section>
