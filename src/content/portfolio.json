@@ -1,8 +1,7 @@
 {
   "name": "Justine Norie",
   "shortTerm": "I build things for web",
-  "description": "Web React Developer & Multi-Platform App Builder, Hands-on problem solver specializing in modern web, mobile, and desktop systems with strong UI/UX, real-world project development, and end-to-end architecture skills.",
-  "bio": "I am a dedicated software engineer with a focus on system architecture and design. I thrive on building scalable, efficient, and robust systems that solve real-world problems. My approach involves deep analysis of requirements, careful selection of technologies, and a commitment to best practices in coding and deployment. Whether it's a complex web platform or a high-performance backend service, I aim for architectural excellence.",
+  "description": "TODO: (Change this) Web React Developer & Multi-Platform App Builder, Hands-on problem solver specializing in modern web, mobile, and desktop systems with strong UI/UX, real-world project development, and end-to-end architecture skills.",
   "socials": [
     {
       "name": "Github",
@@ -32,28 +31,39 @@
       "description": "Specialized in Software Architecture"
     }
   ],
-  "techStacks": [
-    "HTML",
-    "CSS",
-    "JavaScript",
-    "React",
-    "Node.js",
-    "MongoDB",
-    "Vue.js",
-    "Firebase",
-    "Tailwind CSS",
-    "Rust",
-    "API",
-    "CLI"
-  ],
-
   
   "projects": [
     {
-      "name": "E-commerce Dashboard",
-      "description": "A comprehensive dashboard for managing online stores, featuring real-time analytics and inventory management.",
-      "link": "https://github.com/justinenorie",
-      "tags": ["React", "Node.js", "MongoDB", "Chart.js"]
+      "name": "S8CVote",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "image":"s8cvote.png",
+      "github_link": "https://github.com/justinenorie",
+      "deploy_link": "https://github.com/justinenorie",
+      "tags": ["React", "Node.js", "SQLite"]
+    },
+    {
+      "name": "Sample",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "image":"s8cvote.png",
+      "github_link": "https://github.com/justinenorie",
+      "deploy_link": "https://github.com/justinenorie",
+      "tags": ["React", "Node.js", "Supabase"]
+    },
+    {
+      "name": "Sample",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "image":"s8cvote.png",
+      "github_link": "https://github.com/justinenorie",
+      "deploy_link": "https://github.com/justinenorie",
+      "tags": ["React", "Node.js", "Supabase", "Supabase", "Supabase", "Supabase", "Supabase", "Supabase", "Supabase"]
+    },
+    {
+      "name": "Sample",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "image":"s8cvote.png",
+      "github_link": "https://github.com/justinenorie",
+      "deploy_link": "https://github.com/justinenorie",
+      "tags": ["React", "Node.js", "Supabase", "Supabase", "Supabase", "Supabase", "Supabase", "Supabase", "Supabase"]
     }
   ],
   "experience": [

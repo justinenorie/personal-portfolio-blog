@@ -6,10 +6,10 @@ import TechStacks from "../ui/TechStacks.astro";
 const portfolioData = await import("../../content/portfolio.json");
 ---
 
-<section id="about" class="py-24" data-aos="fade-up">
+<section id="about" class="bg-card/50 py-24" data-aos="fade-up">
   <div class="space-y-10">
     <!-- Headline -->
-    <div class="flex flex-col gap-4 text-center">
+    <div class="flex flex-col gap-2 text-center">
       <h2>Things you need to know about me</h2>
 
       <p>
@@ -23,6 +23,7 @@ const portfolioData = await import("../../content/portfolio.json");
       <!-- Specialization Box -->
       <div
         class="border-border/50 bg-card group relative overflow-hidden rounded-2xl border shadow-lg md:col-span-3 md:row-span-2"
+        data-aos="fade-left"
       >
         <Image
           src={DFD_sample}
@@ -33,6 +34,7 @@ const portfolioData = await import("../../content/portfolio.json");
           class="from-background via-background/60 absolute inset-0 bg-linear-to-t to-transparent"
         >
         </div>
+        <!-- TODO: Make this changing paragraph (eg. Web Developer, Front-end, Back-end and etc...) -->
         <div class="relative flex h-full max-w-2xl items-end p-6">
           <h3>
             {portfolioData.block1}
@@ -43,6 +45,7 @@ const portfolioData = await import("../../content/portfolio.json");
       <!-- College Degree Box -->
       <div
         class="border-border/50 bg-card group flex flex-col justify-center space-y-2 rounded-2xl border p-6 shadow-lg md:col-span-2 md:row-span-1"
+        data-aos="fade-left"
       >
         <p class="text-muted-foreground uppercase">
           {portfolioData.education[0].top_description}
@@ -61,19 +64,23 @@ const portfolioData = await import("../../content/portfolio.json");
 
       <div
         class="border-border/50 bg-card group flex flex-col justify-center space-y-2 rounded-2xl border p-6 shadow-lg md:col-span-2 md:row-span-1"
+        data-aos="fade-left"
       >
         <h4>Open for work</h4>
       </div>
 
+      <!-- Info1 -->
       <div
         class="border-border/50 bg-card group flex flex-col justify-center space-y-2 rounded-2xl border p-6 shadow-lg md:col-span-2 md:row-span-1"
+        data-aos="fade-right"
       >
         <h4>Info 1</h4>
       </div>
 
       <!-- Tech Stacks -->
       <div
-        class="border-border/50 rounded-2xl border p-6 shadow-lg md:col-span-3 md:row-span-2"
+        class="border-border/50 bg-card rounded-2xl border p-6 shadow-lg md:col-span-3 md:row-span-2"
+        data-aos="fade-right"
       >
         <div>
           <h4>Skills and Tools</h4>
@@ -84,8 +91,10 @@ const portfolioData = await import("../../content/portfolio.json");
         </div>
       </div>
 
+      <!-- info2 -->
       <div
         class="border-border/50 bg-card group flex flex-col justify-center space-y-2 rounded-2xl border p-6 shadow-lg md:col-span-2 md:row-span-1"
+        data-aos="fade-right"
       >
         <h4>Info 2</h4>
       </div>

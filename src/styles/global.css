@@ -91,7 +91,6 @@
   --color-SUCCESSlight: #00c851;
   --color-SUCCESSdark: #017e32;
 }
-
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -124,6 +123,8 @@
   --color-primary: var(--primary);
   --color-popover-foreground: var(--popover-foreground);
   --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -139,7 +140,7 @@
   --foreground: var(--color-TEXTdark);
 
   /* Surfaces */
-  --card: #E8E9E8;
+  --card: #E1E2F4;
   --card-foreground: var(--color-TEXTdark);
   --popover: var(--color-BGlight);
   --popover-foreground: var(--color-TEXTdark);
@@ -162,7 +163,7 @@
   --destructive-foreground: var(--color-TEXTlight);
 
   /* UI controls */
-  --border: var(--color-PRIMARY-300);
+  --border: #BDC0D3;
   --input: var(--color-PRIMARY-100);
   --ring: var(--color-PRIMARY-400);
 
@@ -183,7 +184,7 @@
   --foreground: var(--color-TEXTlight);
 
   /* Surfaces */
-  --card: #1A1F25;
+  --card: #15151E;
   --card-foreground: var(--color-TEXTlight);
   --popover: var(--color-BGdark);
   --popover-foreground: var(--color-TEXTlight);
@@ -206,7 +207,7 @@
   --destructive-foreground: var(--color-TEXTlight);
 
   /* UI controls */
-  --border: var(--color-PRIMARY-800);
+  --border: #3D3E48;
   --input: var(--color-PRIMARY-700);
   --ring: var(--color-PRIMARY-500);
 
