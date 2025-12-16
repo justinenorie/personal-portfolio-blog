@@ -19,6 +19,26 @@
       "icon": "Mail"
     }
   ],
+  "contacts": [
+    {
+      "label": "Email",
+      "value": "justinedelacruz97@gmail.com",
+      "url": "mailto:justinedelacruz97@gmail.com",
+      "icon": "Mail"
+    },
+    {
+      "label": "Phone",
+      "value": "+63 912 681 6090",
+      "url": "tel:+639126816090",
+      "icon": "Phone"
+    },
+    {
+      "label": "Facebook",
+      "value": "/justinenorie",
+      "url": "https://www.facebook.com/justinenorie/",
+      "icon": "Facebook"
+    }
+  ],
 
   "block1": "I am a Developer who designs software architectures, builds dependable and user-focused for web applications",
   "education": [

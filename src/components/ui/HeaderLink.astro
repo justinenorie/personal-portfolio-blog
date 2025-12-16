@@ -13,16 +13,17 @@ const isActive = href === pathname || href === "/" + (subpath?.[0] || "");
   href={href}
   class:list={[
     "group relative inline-flex items-center px-1 py-1 text-base font-medium transition-colors",
-    isActive ? "text-primary font-semibold" : "text-muted-foreground hover:text-foreground",
+    isActive
+      ? "text-primary font-semibold"
+      : "text-foreground hover:text-primary",
     className,
   ]}
   {...props}
 >
   <slot />
-  <span 
+  <span
     class:list={[
-        "absolute -bottom-0.5 left-0 h-0.5 w-full bg-primary rounded-full transition-transform duration-300 ease-out origin-left",
-        isActive ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
-    ]}
-  ></span>
+      "bg-primary absolute -bottom-0.5 left-0 h-0.5 w-full origin-left rounded-full transition-transform duration-300 ease-out",
+      isActive ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100",
+    ]}></span>
 </a>

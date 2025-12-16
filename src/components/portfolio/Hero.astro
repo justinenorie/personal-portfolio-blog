@@ -4,6 +4,8 @@ import Github from "@lucide/astro/icons/github";
 import Linkedin from "@lucide/astro/icons/linkedin";
 import Mail from "@lucide/astro/icons/mail";
 import Download from "@lucide/astro/icons/download";
+import Image from "astro/components/Image.astro";
+import profile from "../../assets/html.jpeg";
 
 const portfolioData = await import("../../content/portfolio.json");
 
@@ -73,7 +75,7 @@ const iconMap: Record<string, any> = {
         <div
           class="h-[285px] w-[285px] rounded-full bg-blue-500/30 blur-3xl xl:h-[498px] xl:w-[498px]"
         >
-        </div>
+        </div>rounded-full
       </div>
 
       <!-- Your actual content goes here -->
@@ -81,6 +83,11 @@ const iconMap: Record<string, any> = {
         <div
           class="h-[265px] w-[265px] rounded-full border border-neutral-700 bg-neutral-900/80 xl:h-[488px] xl:w-[488px]"
         >
+          <Image
+            src={profile}
+            alt="Profile Picture"
+            class="h-full w-full rounded-full object-cover"
+          />
         </div>
       </div>
     </div>
