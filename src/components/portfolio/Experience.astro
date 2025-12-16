@@ -1,34 +1,47 @@
 ---
-const jobs = [
- 
-  {
-    role: "Junior Web Developer",
-    company: "Sample",
-    period: "2025 - 2026",
-    description:
-      "Built responsive websites. Gained proficiency in HTML, CSS, and JavaScript.",
-  },
-];
+import Icon from "../ui/Icon.astro";
+const portfolioData = await import("../../content/portfolio.json");
 ---
 
-<section id="experience" class="py-24 bg-card/50" data-aos="fade-up">
-  <h2 class="text-4xl font-bold mb-8">Experience</h2>
-  <div class="relative border-l-2 border-border ml-12 space-y-10">
+<section id="experience" class="py-24" data-aos="fade-up">
+  <h2 class="mb-12 text-4xl font-bold">Experience</h2>
+
+  <div class="relative ml-4 space-y-12 md:ml-12">
+    {/* Gradient Vertical Line */}
+    <div
+      class="from-primary via-primary/50 absolute top-0 bottom-0 left-0 w-0.5 bg-linear-to-b to-transparent"
+    >
+    </div>
+
     {
-      jobs.map((job) => (
-        <div class="relative">
-          <!-- Marker -->
-          <div class="absolute -left-[3.65rem] top-1.5 h-5 w-5 rounded-full border-4 border-background bg-primary" />
-          
-          <!-- Content -->
-          <div class="pl-4">
-            <h3 class="text-xl font-bold">{job.role}</h3>
-            <span class="block text-sm font-semibold text-muted-foreground mb-2">
-              {job.company} | {job.period}
-            </span>
-            <p class="text-muted-foreground leading-relaxed">
-              {job.description}
-            </p>
+      portfolioData.experience.map((job) => (
+        <div data-aos="fade-up" class="group relative pl-8 md:pl-12">
+          {/* Timeline Dot with Icon */}
+          <div class="bg-background border-muted-foreground/30 group-hover:border-primary absolute top-2 left-[-11px] z-10 flex h-6 w-6 items-center justify-center rounded-full border-2 transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg">
+            <Icon
+              name="briefcase"
+              class="text-muted-foreground group-hover:text-primary h-3 w-3 transition-colors"
+            />
+          </div>
+
+          {/* Horizontal Connector */}
+          <div class="bg-muted-foreground/30 group-hover:bg-primary/50 absolute top-5 left-[11px] h-0.5 w-5 transition-colors duration-300 md:w-9" />
+
+          {/* Card */}
+          <div class="border-border bg-card hover:border-primary/50 relative space-y-5 rounded-xl border p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+            <div class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+              <div>
+                <h5 class="group-hover:text-primary transition-colors">
+                  {job.role}
+                </h5>
+                <p class="text-foreground/80">{job.company}</p>
+              </div>
+              <span class="border-border text-secondary-foreground inline-flex items-center rounded-full border px-3 py-1 whitespace-nowrap">
+                <small>{job.period}</small>
+              </span>
+            </div>
+
+            <p class="leading-relaxed">{job.description}</p>
           </div>
         </div>
       ))

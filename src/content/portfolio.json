@@ -20,23 +20,22 @@
     }
   ],
 
-
-  "block1":"I am a Developer who designs software architectures, builds dependable and user-focused for web applications",
+  "block1": "I am a Developer who designs software architectures, builds dependable and user-focused for web applications",
   "education": [
     {
-      "top_description":"4th Year College student",
+      "top_description": "4th Year College student",
       "degree": "Bachelor of Science in Information Technology",
       "institution": "Colegio De Montalban",
       "year": "2022-2026",
       "description": "Specialized in Software Architecture"
     }
   ],
-  
+
   "projects": [
     {
       "name": "S8CVote",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      "image":"s8cvote.png",
+      "image": "s8cvote.png",
       "github_link": "https://github.com/justinenorie",
       "deploy_link": "https://github.com/justinenorie",
       "tags": ["React", "Node.js", "SQLite"]
@@ -44,7 +43,7 @@
     {
       "name": "Sample",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      "image":"s8cvote.png",
+      "image": "s8cvote.png",
       "github_link": "https://github.com/justinenorie",
       "deploy_link": "https://github.com/justinenorie",
       "tags": ["React", "Node.js", "Supabase"]
@@ -52,26 +51,52 @@
     {
       "name": "Sample",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      "image":"s8cvote.png",
+      "image": "s8cvote.png",
       "github_link": "https://github.com/justinenorie",
       "deploy_link": "https://github.com/justinenorie",
-      "tags": ["React", "Node.js", "Supabase", "Supabase", "Supabase", "Supabase", "Supabase", "Supabase", "Supabase"]
+      "tags": [
+        "React",
+        "Node.js",
+        "Supabase",
+        "Supabase",
+        "Supabase",
+        "Supabase",
+        "Supabase",
+        "Supabase",
+        "Supabase"
+      ]
     },
     {
       "name": "Sample",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      "image":"s8cvote.png",
+      "image": "s8cvote.png",
       "github_link": "https://github.com/justinenorie",
       "deploy_link": "https://github.com/justinenorie",
-      "tags": ["React", "Node.js", "Supabase", "Supabase", "Supabase", "Supabase", "Supabase", "Supabase", "Supabase"]
+      "tags": [
+        "React",
+        "Node.js",
+        "Supabase",
+        "Supabase",
+        "Supabase",
+        "Supabase",
+        "Supabase",
+        "Supabase",
+        "Supabase"
+      ]
     }
   ],
   "experience": [
     {
-      "role": "Junior Web Developer",
-      "company": "Creative Agency",
-      "period": "2018 - 2019",
-      "description": "Built responsive websites for various clients. Gained proficiency in HTML, CSS, and JavaScript."
+      "role": "Capstone Project Developer",
+      "company": "Colegio De Montalban",
+      "period": "2024 - Present",
+      "description": "Designing and developing a multi-platform voting system (web, desktop, and mobile). Focused on system architecture, database design, authentication, and real-time data handling."
+    },
+    {
+      "role": "Capstone Project Developer",
+      "company": "Colegio De Montalban",
+      "period": "2024 - Present",
+      "description": "Designing and developing a multi-platform voting system (web, desktop, and mobile). Focused on system architecture, database design, authentication, and real-time data handling."
     }
   ]
 }

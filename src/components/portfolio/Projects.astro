@@ -27,54 +27,54 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
         const imageSrc = images[imagePath]?.default;
 
         return (
-          <div
-            data-aos="fade-left"
-            class="group bg-card border-border flex flex-col space-y-5 rounded-xl border p-6 shadow-lg"
-          >
-            {/* Image and Description */}
-            <div
-              class="group relative overflow-hidden rounded-lg focus:outline-none"
-              tabindex="0"
-            >
-              <Image
-                src={imageSrc || "/favicon.svg"}
-                alt={`${project.name} preview`}
-                class="object-cover transition-all duration-700 ease-out group-focus-within:scale-110 group-focus-within:blur-sm group-hover:scale-110 group-hover:blur-sm"
-              />
+          <div data-aos="fade-up">
+            <div class="group bg-card border-border hover:border-primary/50 flex h-full flex-col space-y-5 rounded-xl border p-6 shadow-lg transition-all duration-300 hover:-translate-y-1">
+              {/* Image and Description */}
+              <div
+                class="group relative overflow-hidden rounded-lg focus:outline-none"
+                tabindex="0"
+              >
+                <Image
+                  src={imageSrc || "/favicon.svg"}
+                  alt={`${project.name} preview`}
+                  class="object-cover transition-all duration-700 ease-out group-focus-within:scale-110 group-focus-within:blur-sm group-hover:scale-110 group-hover:blur-sm"
+                />
 
-              <div class="absolute inset-0 z-10 flex items-center justify-center p-4 text-center opacity-0 transition-all duration-700 ease-out group-focus-within:opacity-100 group-hover:opacity-100">
-                <p class="text-TEXTlight">{project.description}</p>
-              </div>
-            </div>
-
-            {/* title and stacks */}
-            <div class="space-y-2">
-              <div class="flex items-center justify-between gap-2">
-                <h4>{project.name}</h4>
-                <div class="flex items-center gap-3">
-                  <a
-                    href={project.github_link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Icon class="text-foreground h-7 w-7" name="github" />
-                  </a>
-
-                  <a
-                    href={project.deploy_link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Link2 class="text-foreground h-7 w-7" />
-                  </a>
+                <div class="absolute inset-0 z-10 flex items-center justify-center p-4 text-center opacity-0 transition-all duration-700 ease-out group-focus-within:opacity-100 group-hover:opacity-100">
+                  <p class="text-TEXTlight">{project.description}</p>
                 </div>
               </div>
-              <div class="flex flex-wrap gap-2">
-                {project.tags.map((tag) => (
-                  <span class="bg-primary rounded px-2.5 py-0.5">
-                    <small class="text-primary-foreground">{tag}</small>
-                  </span>
-                ))}
+
+              {/* title and stacks */}
+              <div class="space-y-2">
+                <div class="flex items-center justify-between gap-2">
+                  <h4>{project.name}</h4>
+                  <div class="flex items-center gap-3">
+                    <a
+                      href={project.github_link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Icon class="text-foreground h-7 w-7" name="github" />
+                    </a>
+
+                    <a
+                      href={project.deploy_link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Link2 class="text-foreground h-7 w-7" />
+                    </a>
+                  </div>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                  {project.tags.map((tag) => (
+                    // TODO: each tech stack tags add an Icon
+                    <span class="bg-primary/80 rounded px-2.5 py-0.5">
+                      <small class="text-primary-foreground">{tag}</small>
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
