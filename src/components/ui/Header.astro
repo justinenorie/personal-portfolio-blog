@@ -4,9 +4,9 @@ import HeaderLink from "./HeaderLink.astro";
 import ThemeToggle from "./ThemeToggle.astro";
 ---
 
-<header class="sticky top-0 z-50 py-4">
+<header class="sticky top-0 z-50 px-4 py-4 md:px-6">
   <nav
-    class="bg-background/50 supports-backdrop-filter:bg-background/60 border-foreground/20 flex items-center justify-between rounded-lg border px-5 py-2 backdrop-blur transition-all duration-500 md:px-10"
+    class="border-border/50 bg-background/60 relative mx-auto flex max-w-7xl items-center justify-between rounded-2xl border px-5 py-3 shadow-sm backdrop-blur-md transition-all"
   >
     <h2 class="flex items-center">
       <a
@@ -16,15 +16,144 @@ import ThemeToggle from "./ThemeToggle.astro";
         {SITE_TITLE}
       </a>
     </h2>
+
     <div class="hidden items-center gap-6 md:flex">
-      <HeaderLink href="/">Home</HeaderLink>
-      <!-- TODO: Add a Project Page -->
-      <HeaderLink href="/projects">Projects</HeaderLink>
-      <HeaderLink href="/blog">Blog</HeaderLink>
+      <div class="flex gap-4">
+        <HeaderLink href="/">Home</HeaderLink>
+        <HeaderLink href="/projects">Projects</HeaderLink>
+        <HeaderLink href="/blog">Blog</HeaderLink>
+      </div>
+      <div class="bg-border/50 h-6 w-px"></div>
       <ThemeToggle />
     </div>
 
-    <!-- TODO: Change this into Hamburger style -->
-    <!-- Mobile Nav (Simple horizontal scroll for now) -->
+    <button
+      id="menu-btn"
+      aria-label="Toggle Menu"
+      class="text-foreground hover:bg-muted rounded-md p-2 transition-colors md:hidden"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <line x1="4" x2="20" y1="12" y2="12"></line>
+        <line x1="4" x2="20" y1="6" y2="6"></line>
+        <line x1="4" x2="20" y1="18" y2="18"></line>
+      </svg>
+    </button>
   </nav>
+
+  <div
+    id="menu-backdrop"
+    class="bg-background/80 pointer-events-none fixed inset-0 z-40 opacity-0 backdrop-blur-sm transition-opacity duration-300"
+  >
+  </div>
+
+  <div
+    id="mobile-menu"
+    class="border-border bg-card fixed inset-y-0 right-0 z-50 h-screen w-3/4 max-w-sm translate-x-full transform border-l p-6 shadow-2xl transition-transform duration-300 ease-in-out sm:max-w-xs"
+  >
+    <div class="mb-8 flex items-center justify-between">
+      <span class="text-lg font-bold">Menu</span>
+      <button
+        id="close-menu-btn"
+        aria-label="Close Menu"
+        class="text-muted-foreground hover:bg-muted hover:text-foreground rounded-md p-2"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M18 6 6 18"></path>
+          <path d="m6 6 12 12"></path>
+        </svg>
+      </button>
+    </div>
+
+    <div class="flex flex-col space-y-4">
+      <HeaderLink
+        href="/"
+        class="border-border/50 border-b py-2 text-lg font-medium"
+      >
+        Home
+      </HeaderLink>
+      <HeaderLink
+        href="/projects"
+        class="border-border/50 border-b py-2 text-lg font-medium"
+      >
+        Projects
+      </HeaderLink>
+      <HeaderLink
+        href="/blog"
+        class="border-border/50 border-b py-2 text-lg font-medium"
+      >
+        Blog
+      </HeaderLink>
+    </div>
+
+    <div class="mt-8 flex items-center justify-between">
+      <span class="text-muted-foreground text-sm font-medium">Switch Theme</span
+      >
+      <ThemeToggle />
+    </div>
+  </div>
 </header>
+
+<script>
+  // Vanilla JS for Menu Toggling
+  const menuBtn = document.getElementById("menu-btn");
+  const closeBtn = document.getElementById("close-menu-btn");
+  const mobileMenu = document.getElementById("mobile-menu");
+  const backdrop = document.getElementById("menu-backdrop");
+  const body = document.body;
+
+  function openMenu() {
+    // Show Menu (Slide in from right)
+    mobileMenu?.classList.remove("translate-x-full");
+    mobileMenu?.classList.add("translate-x-0");
+
+    // Show Backdrop
+    backdrop?.classList.remove("opacity-0", "pointer-events-none");
+    backdrop?.classList.add("opacity-100", "pointer-events-auto");
+
+    // Prevent background scrolling
+    body.style.overflow = "hidden";
+  }
+
+  function closeMenu() {
+    // Hide Menu (Slide out to right)
+    mobileMenu?.classList.remove("translate-x-0");
+    mobileMenu?.classList.add("translate-x-full");
+
+    // Hide Backdrop
+    backdrop?.classList.remove("opacity-100", "pointer-events-auto");
+    backdrop?.classList.add("opacity-0", "pointer-events-none");
+
+    // Restore scrolling
+    body.style.overflow = "auto";
+  }
+
+  // Event Listeners
+  menuBtn?.addEventListener("click", openMenu);
+  closeBtn?.addEventListener("click", closeMenu);
+  backdrop?.addEventListener("click", closeMenu);
+
+  // Close on "Escape" key
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeMenu();
+  });
+</script>
