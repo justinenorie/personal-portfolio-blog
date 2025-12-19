@@ -11,18 +11,23 @@
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.12",
+    "@astrojs/react": "^4.4.2",
     "@astrojs/rss": "^4.0.14",
     "@astrojs/sitemap": "^3.6.0",
     "@lucide/astro": "^0.555.0",
     "aos": "^2.3.4",
     "astro": "^5.16.1",
     "lucide-react": "^0.555.0",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
     "sharp": "^0.34.3"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.19",
     "@tailwindcss/vite": "^4.1.17",
     "@types/aos": "^3.0.7",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
     "prettier": "3.7.1",
     "prettier-plugin-astro": "0.14.1",
     "prettier-plugin-tailwindcss": "^0.7.1",
