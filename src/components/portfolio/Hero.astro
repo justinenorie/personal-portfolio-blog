@@ -1,19 +1,13 @@
 ---
 import Button from "../ui/Button.astro";
-import Github from "@lucide/astro/icons/github";
-import Linkedin from "@lucide/astro/icons/linkedin";
-import Mail from "@lucide/astro/icons/mail";
 import Download from "@lucide/astro/icons/download";
 import Image from "astro/components/Image.astro";
 import profile from "../../assets/html.jpeg";
+import Icon from "../ui/Icon.astro";
+import { icons } from "../ui/icons";
+type IconName = keyof typeof icons;
 
 const portfolioData = await import("../../content/portfolio.json");
-
-const iconMap: Record<string, any> = {
-  Github,
-  Linkedin,
-  Mail,
-};
 ---
 
 <section class="flex h-screen justify-center" data-aos="fade-up">
@@ -39,13 +33,12 @@ const iconMap: Record<string, any> = {
           variant="outline"
           class="flex flex-row gap-2"
         >
-          <Download />
+          <Download class="hover:text- h-5 w-5" />
         </Button>
         <div class="flex gap-4">
           {
             portfolioData.socials &&
               portfolioData.socials.map((social) => {
-                const IconComponent = iconMap[social.icon];
                 return (
                   <div class="border-primary hover:bg-primary text-foreground hover:text-primary-foreground rounded-full border-2 p-2 transition-all duration-500 hover:scale-130">
                     <a
@@ -54,7 +47,7 @@ const iconMap: Record<string, any> = {
                       rel="noopener noreferrer"
                       aria-label={`Link to my ${social.name}`}
                     >
-                      {IconComponent ? <IconComponent /> : social.name}
+                      <Icon name={social.icon as IconName} class="h-7 w-7" />
                     </a>
                   </div>
                 );
@@ -75,7 +68,7 @@ const iconMap: Record<string, any> = {
         <div
           class="h-[285px] w-[285px] rounded-full bg-blue-500/30 blur-3xl xl:h-[498px] xl:w-[498px]"
         >
-        </div>rounded-full
+        </div>
       </div>
 
       <!-- Your actual content goes here -->

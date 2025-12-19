@@ -1,22 +1,24 @@
 ---
-import { icons } from "./icons";
+import { icons, type IconName } from "./icons";
 
 interface Props {
-  name: keyof typeof icons;
+  name: IconName;
   class?: string;
+  title?: string;
 }
 
-const { name, class: className } = Astro.props;
-const iconPath = icons[name];
+const { name, class: className, title } = Astro.props;
+const icon = icons[name];
 ---
 
 <svg
   class={className}
-  role="img"
-  viewBox="0 0 24 24"
+  viewBox={icon.viewBox}
   xmlns="http://www.w3.org/2000/svg"
   fill="currentColor"
+  aria-hidden={!title}
+  role={title ? "img" : "presentation"}
 >
-  <title>{name}</title>
-  <path d={iconPath}></path>
+  {title && <title>{title}</title>}
+  {icon.paths.map((d) => <path d={d} />)}
 </svg>

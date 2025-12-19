@@ -6,17 +6,17 @@
     {
       "name": "Github",
       "url": "https://github.com/justinenorie",
-      "icon": "Github"
+      "icon": "github"
     },
     {
       "name": "Linkedin",
       "url": "https://linkedin.com/in/your-username",
-      "icon": "Linkedin"
+      "icon": "linkedin"
     },
     {
       "name": "Mail",
       "url": "mailto:justinedelacruz97@gmail.com",
-      "icon": "Mail"
+      "icon": "mail"
     }
   ],
   "contacts": [
@@ -40,7 +40,7 @@
     }
   ],
 
-  "block1": "I am a Developer who designs software architectures, builds dependable and user-focused for web applications",
+  "block1": "I am a developer who designs software architectures and builds dependable, user-focused web applications.",
   "education": [
     {
       "top_description": "4th Year College student",
@@ -49,6 +49,19 @@
       "year": "2022-2026",
       "description": "Specialized in Software Architecture"
     }
+  ],
+  "work":{
+    "title":"Open for work",
+    "description":[
+      "Junior / Entry-level Web Developer Position",
+      "Interested in: Web apps and design‑focused products."
+    ]
+  },
+  
+  "TechStacks":[
+    "javascript",
+    "react",
+    "tailwind"
   ],
 
   "projects": [

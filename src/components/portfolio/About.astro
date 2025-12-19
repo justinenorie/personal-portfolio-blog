@@ -62,11 +62,31 @@ const portfolioData = await import("../../content/portfolio.json");
         </small>
       </div>
 
+      <!-- Open for work box -->
       <div
         class="border-border/50 bg-card group flex flex-col justify-center space-y-2 rounded-2xl border p-6 shadow-lg md:col-span-2 md:row-span-1"
         data-aos="fade-up"
       >
-        <h4>Open for work</h4>
+        <div class="flex flex-row items-center gap-3">
+          <span class="relative flex size-4">
+            <span
+              class="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-500 opacity-75"
+            ></span>
+
+            <span
+              class="relative inline-flex size-4 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.8)]"
+            ></span>
+          </span>
+          <h4>{portfolioData.work.title}</h4>
+        </div>
+
+        <ul class="list-inside list-disc space-y-2 pl-4">
+          {
+            portfolioData.work.description.map((desc) => (
+              <li class="text-foreground font-mono text-base">{desc}</li>
+            ))
+          }
+        </ul>
       </div>
 
       <!-- Info1 -->
@@ -86,7 +106,7 @@ const portfolioData = await import("../../content/portfolio.json");
           <h4>Skills and Tools</h4>
           <p>The tools and technologies that I have experience with:</p>
         </div>
-        <div class="grid grid-cols-3 gap-4 pt-2">
+        <div class="grid gap-4 pt-2 sm:grid-cols-2 xl:grid-cols-3">
           <TechStacks />
         </div>
       </div>
