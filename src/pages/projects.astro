@@ -1,11 +1,101 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/ui/Header.astro";
+import portfolio from "../content/portfolio.json";
+import { Image } from "astro:assets";
+import Button from "../components/ui/Button.astro";
+
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  "../assets/projects/*.{jpeg,jpg,png,gif}",
+);
+
+const { projects } = portfolio;
 ---
 
-<Layout title="" description="Lorem ipsum dolor sit amet">
+<Layout
+  title={`Projects | ${portfolio.name}`}
+  description="A showcase of my projects and works."
+>
   <Header />
-  <div>
-    <h1 class="text-center">Coming soon...</h1>
-  </div>
+  <main class="container mx-auto px-4 py-12">
+    <div class="mb-12">
+      <h1 class="text-4xl font-bold mb-4">Projects</h1>
+      <p class="text-lg text-gray-600 dark:text-gray-400">
+        Here are some of the projects I've worked on.
+      </p>
+    </div>
+
+    <div class="flex flex-col gap-16">
+      {
+        projects.map((project) => {
+          const imagePath = `../assets/projects/${project.image}`;
+          const imageSrc = images[imagePath]
+            ? images[imagePath]()
+            : null;
+
+          return (
+            <article class="flex flex-col md:flex-row gap-8 items-start group">
+              <div class="w-full md:w-1/2 overflow-hidden rounded-xl shadow-lg transition-transform duration-500 hover:shadow-xl">
+                {imageSrc ? (
+                   <div class="aspect-video w-full overflow-hidden bg-gray-100 dark:bg-gray-800">
+                    {/* @ts-ignore */}
+                     <Image
+                        src={imageSrc}
+                        alt={project.name}
+                        width={800}
+                        height={450}
+                        class="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                      />
+                   </div>
+                ) : (
+                  <div class="aspect-video w-full flex items-center justify-center bg-gray-200 dark:bg-gray-700 text-gray-400">
+                    <span class="text-lg">Image not found</span>
+                  </div>
+                )}
+              </div>
+
+              <div class="w-full md:w-1/2 flex flex-col gap-4">
+                <h2 class="text-3xl font-bold">{project.name}</h2>
+                <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+                  {project.description}
+                </p>
+                
+                <div class="flex flex-wrap gap-4 my-2">
+                   {project.github_link && (
+                    <Button
+                      href={project.github_link}
+                      text="GitHub Repo"
+                      variant="outline"
+                      size="sm"
+                    />
+                  )}
+                  {project.deploy_link && (
+                    <Button
+                      href={project.deploy_link}
+                      text="Live Demo"
+                      variant="primary"
+                      size="sm"
+                    />
+                  )}
+                </div>
+
+                <div class="mt-auto pt-4">
+                  <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">
+                    Tech Stack
+                  </h3>
+                  <div class="flex flex-wrap gap-2">
+                    {project.tags.map((tag) => (
+                      <span class="px-3 py-1 text-sm font-medium rounded-full bg-primary/10 text-primary border border-primary/20">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </article>
+          );
+        })
+      }
+    </div>
+  </main>
 </Layout>
