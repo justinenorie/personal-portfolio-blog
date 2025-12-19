@@ -7,11 +7,11 @@ heroImage: "../../assets/blog-placeholder-1.jpg"
 
 Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro.
 
-## Headings
+# Headings
 
 The following HTML `<h1>`—`<h6>` elements represent six levels of section headings. `<h1>` is the highest section level while `<h6>` is the lowest.
 
-# H1
+# H1 - This H1
 
 ## H2
 
@@ -29,7 +29,7 @@ Xerum, quo qui aut unt expliquam qui dolut labo. Aque venitatiusda cum, voluptio
 
 Itatur? Quiatae cullecum rem ent aut odis in re eossequodi nonsequ idebis ne sapicia is sinveli squiatum, core et que aut hariosam ex eat.
 
-## Images
+## 🥰 Images
 
 ### Syntax
 
@@ -41,11 +41,11 @@ Itatur? Quiatae cullecum rem ent aut odis in re eossequodi nonsequ idebis ne sap
 
 ![blog placeholder](../../assets/blog-placeholder-about.jpg)
 
-## Blockquotes
+## Blockquotes 
 
 The blockquote element represents content that is quoted from another source, optionally with a citation which must be within a `footer` or `cite` element, and optionally with in-line changes such as annotations and abbreviations.
 
-### Blockquote without attribution
+### Blockquote without attribution  
 
 #### Syntax
 

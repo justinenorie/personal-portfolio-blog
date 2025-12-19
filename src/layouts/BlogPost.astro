@@ -6,40 +6,178 @@ import Footer from "../components/portfolio/Footer.astro";
 import FormattedDate from "../components/FormattedDate.astro";
 import Header from "../components/ui/Header.astro";
 
-type Props = CollectionEntry<"blog">["data"];
+type Props = CollectionEntry<"blog">["data"] & {
+  headings: { depth: number; slug: string; text: string }[];
+  readingTime: string;
+};
 
-const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+const {
+  title,
+  description,
+  pubDate,
+  updatedDate,
+  heroImage,
+  headings,
+  readingTime,
+} = Astro.props;
 ---
 
 <Layout title={title} description={description}>
   <Header />
-  <main>
-    <article class="prose dark:prose-invert m-auto w-[50%] max-w-full! p-10">
-      <div class="hero-image">
+  <main class="container mx-auto px-4 py-8">
+    <article class="mx-auto max-w-7xl">
+      {/* 1. Hero Image at the Top */}
+      <div
+        class="bg-secondary/20 mb-8 aspect-video w-full overflow-hidden rounded-2xl md:aspect-21/9"
+      >
         {
           heroImage && (
-            <Image width={1020} height={510} src={heroImage} alt="" />
+            <Image
+              src={heroImage}
+              alt={title}
+              class="h-full w-full object-cover"
+              width={1200}
+              height={600}
+            />
           )
         }
       </div>
-      <div class="">
-        <div class="title">
-          <div class="date">
-            <FormattedDate date={pubDate} />
+
+      <div class="grid grid-cols-1 gap-12 xl:grid-cols-[1fr_300px]">
+        {/* Main Content Column */}
+        <div class="min-w-0">
+          {/* Header Section */}
+          <div class="border-border mb-8 border-b pb-8">
+            <h1 class="mb-4 text-4xl leading-tight font-bold md:text-5xl">
+              {title}
+            </h1>
+            <p class="mb-6 text-xl text-gray-600 dark:text-gray-300">
+              {description}
+            </p>
+
+            <div
+              class="flex flex-wrap items-center gap-6 text-sm font-medium text-gray-500"
+            >
+              <div class="flex items-center gap-2">
+                <span class="sr-only">Published on</span>
+                <FormattedDate date={pubDate} />
+              </div>
+              {
+                updatedDate && (
+                  <div class="italic">
+                    (Updated: <FormattedDate date={updatedDate} />)
+                  </div>
+                )
+              }
+              <div class="flex items-center gap-2">
+                <span>•</span>
+                <span>{readingTime}</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span>•</span>
+                <span>By Norie</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Markdown Content */}
+          <div class="prose dark:prose-invert prose-lg max-w-none">
+            <slot />
+          </div>
+        </div>
+
+        {/* Right Sidebar - Table of Contents */}
+        <aside class="hidden xl:block">
+          <div
+            class="sticky top-24 max-h-[calc(100vh-8rem)] overflow-y-auto pt-2"
+          >
             {
-              updatedDate && (
-                <div class="last-updated-on">
-                  Last updated on <FormattedDate date={updatedDate} />
+              headings && headings.length > 0 && (
+                <div>
+                  <h2 class="text-foreground mb-4 text-sm font-bold tracking-widest uppercase">
+                    On this page
+                  </h2>
+                  <nav class="toc">
+                    <ul class="border-border flex flex-col border-l text-[13px]">
+                      {headings.map((heading) => (
+                        <li class="relative">
+                          <a
+                            href={`#${heading.slug}`}
+                            class={`toc-link hover:text-primary line-clamp-2 block border-l-2 py-2 pr-2 transition-all duration-200 ${
+                              heading.depth === 2
+                                ? "pl-4"
+                                : heading.depth === 3
+                                  ? "pl-8"
+                                  : "pl-4"
+                            } -ml-1px text-foreground hover:border-foreground/50 border-transparent`}
+                          >
+                            {heading.text}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </nav>
                 </div>
               )
             }
           </div>
-          <h1>{title}</h1>
-          <hr />
-        </div>
-        <slot />
+        </aside>
       </div>
     </article>
   </main>
   <Footer />
 </Layout>
+
+<script>
+  // Script to highlight the active TOC item based on scroll position
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        const id = entry.target.getAttribute("id");
+        if (entry.intersectionRatio > 0) {
+          const links = document.querySelectorAll(`.toc-link[href="#${id}"]`);
+
+          if (links.length > 0) {
+            // 1. Reset all links to inactive state
+            document.querySelectorAll(".toc-link").forEach((link) => {
+              link.classList.remove(
+                "border-primary",
+                "text-primary",
+                "font-medium",
+              );
+              link.classList.add("border-transparent");
+            });
+
+            // 2. Set the current link to active state
+            links.forEach((link) => {
+              link.classList.remove(
+                "border-transparent",
+                "text-muted-foreground",
+              );
+              link.classList.add(
+                "border-primary",
+                "text-primary",
+                "font-medium",
+              );
+            });
+          }
+        }
+      });
+    },
+    { rootMargin: "0px 0px -80% 0px" },
+  );
+
+  // Track all headers that have an ID
+  document
+    .querySelectorAll("h1[id], h2[id], h3[id], h4[id]")
+    .forEach((section) => {
+      observer.observe(section);
+    });
+</script>
+
+<style>
+  /* Optional: Smooth scrolling for anchor links */
+  html {
+    scroll-behavior: smooth;
+  }
+</style>
