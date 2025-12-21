@@ -47,7 +47,10 @@ const portfolioData = await import("../../content/portfolio.json");
                       rel="noopener noreferrer"
                       aria-label={`Link to my ${social.name}`}
                     >
-                      <Icon name={social.icon as IconName} class="h-7 w-7" />
+                      <Icon
+                        name={social.icon as IconName}
+                        class="text-foreground! h-7 w-7"
+                      />
                     </a>
                   </div>
                 );

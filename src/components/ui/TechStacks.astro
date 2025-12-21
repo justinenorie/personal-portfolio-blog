@@ -1,36 +1,18 @@
 ---
 import Icon from "./Icon.astro";
 import { icons } from "./icons";
+import portfolio from "../../content/portfolio.json";
 
 type IconName = keyof typeof icons;
 
-interface Tech {
-  name: string;
-  icon: IconName;
-  color: string;
-  iconClass?: string;
-}
-
-const techs: Tech[] = [
-  {
-    name: "JavaScript",
-    icon: "javascript",
-    color: "text-[#F7DF1E]",
-    iconClass: "bg-BGdark",
-  },
-  { name: "React", icon: "react", color: "text-[#61DAFB]" },
-  { name: "Tailwind CSS", icon: "tailwind", color: "text-[#06B6D4]" },
-];
+const techStacks = portfolio.TechStacks as IconName[];
 ---
 
 {
-  techs.map((tech) => (
+  techStacks.map((tech) => (
     <div class="border-border/80 hover:border-primary flex flex-row items-center gap-2 rounded-lg border p-2 transition-all duration-300 hover:scale-105">
-      <Icon
-        name={tech.icon}
-        class={`h-10 w-10 ${tech.color} ${tech.iconClass || ""}`}
-      />
-      <p>{tech.name}</p>
+      <Icon name={tech} class="h-10 w-10" />
+      <p class="capitalize">{tech}</p>
     </div>
   ))
 }
