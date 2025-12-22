@@ -59,10 +59,18 @@
   },
   
   "TechStacks":[
-    "javascript",
-    "react",
-    "tailwind",
-    "tailwind"
+    "Javascript",
+    "Typescript",
+    "Next.js",
+    "React",
+    "Tailwind CSS",
+    "Git",
+    "PostgreSQL",
+    "SQLite",
+    "Drizzle ORM",
+    "Supabase",
+    "Node.js",
+    "Express.js"
   ],
 
   "projects": [

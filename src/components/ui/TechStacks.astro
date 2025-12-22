@@ -10,9 +10,9 @@ const techStacks = portfolio.TechStacks as IconName[];
 
 {
   techStacks.map((tech) => (
-    <div class="border-border/80 hover:border-primary flex flex-row items-center gap-2 rounded-lg border p-2 transition-all duration-300 hover:scale-105">
+    <div class="border-border/80 hover:border-primary flex flex-row items-center gap-3 rounded-lg border p-2 transition-all duration-300 hover:scale-105">
       <Icon name={tech} class="h-10 w-10" />
-      <p class="capitalize">{tech}</p>
+      <p>{tech}</p>
     </div>
   ))
 }

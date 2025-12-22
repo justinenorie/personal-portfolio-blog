@@ -2,6 +2,8 @@
 import { SITE_TITLE } from "../../constants/consts";
 import HeaderLink from "./HeaderLink.astro";
 import ThemeToggle from "./ThemeToggle.astro";
+import { Image } from "astro:assets";
+import logo from "../../../public/icon.png";
 ---
 
 <header class="sticky top-0 z-50 px-4 py-4 md:px-6">
@@ -11,8 +13,9 @@ import ThemeToggle from "./ThemeToggle.astro";
     <h2 class="flex items-center">
       <a
         href="/"
-        class="text-foreground hover:text-primary text-lg font-bold tracking-tight transition-colors"
+        class="text-foreground hover:text-primary flex items-center gap-2 text-lg font-bold tracking-tight transition-colors"
       >
+        <Image src={logo} alt="norie_logo" class="h-10 w-10" />
         {SITE_TITLE}
       </a>
     </h2>
