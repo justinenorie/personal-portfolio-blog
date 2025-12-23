@@ -79,7 +79,7 @@
     {
       "name": "S8CVote",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      "image": "s8cvote.png",
+      "image": "",
       "github_link": "https://github.com/justinenorie",
       "deploy_link": "https://github.com/justinenorie",
       "tags": ["React", "Node.js", "SQLite"]
