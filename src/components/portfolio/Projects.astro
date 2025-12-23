@@ -46,34 +46,36 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
               </div>
 
               {/* title and stacks */}
-              <div class="space-y-2">
-                <div class="flex items-center justify-between gap-2">
-                  <h4>{project.name}</h4>
-                  <div class="flex items-center gap-3">
-                    <a
-                      href={project.github_link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <Icon class="text-foreground! h-7 w-7" name="github" />
-                    </a>
-
-                    <a
-                      href={project.deploy_link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <Link2 class="text-foreground! h-7 w-7" />
-                    </a>
-                  </div>
-                </div>
+              <div class="space-y-5">
+                <h4>{project.name}</h4>
                 <div class="flex flex-wrap gap-2">
                   {project.tags.map((tag) => (
-                    // TODO: each tech stack tags add an Icon
-                    <span class="bg-primary/80 rounded px-2.5 py-0.5">
-                      <small class="text-primary-foreground">{tag}</small>
+                    <span class="bg-primary/10 border-primary/20 flex items-center gap-1.5 rounded-full border px-2.5 py-0.5">
+                      <Icon name={tag as any} class="h-7 w-7" />
+                      <small class="text-foreground font-semibold">{tag}</small>
                     </span>
                   ))}
+                </div>
+                {/* Links */}
+                <div class="flex items-center gap-3">
+                  <a
+                    href={project.github_link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Icon
+                      class="text-foreground! hover:text-primary! h-10 w-10 transition-all duration-500 hover:scale-130"
+                      name="github"
+                    />
+                  </a>
+
+                  <a
+                    href={project.deploy_link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Link2 class="text-foreground! hover:text-primary! h-10 w-10 transition-all duration-500 hover:scale-130" />
+                  </a>
                 </div>
               </div>
             </div>

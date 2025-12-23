@@ -40,7 +40,7 @@ const portfolioData = await import("../../content/portfolio.json");
             portfolioData.socials &&
               portfolioData.socials.map((social) => {
                 return (
-                  <div class="border-primary hover:bg-primary text-foreground hover:text-primary-foreground rounded-full border-2 p-2 transition-all duration-500 hover:scale-130">
+                  <div class="group border-primary hover:bg-primary text-foreground hover:text-primary-foreground rounded-full border-2 p-2 transition-all duration-500 hover:scale-130">
                     <a
                       href={social.url}
                       target="_blank"
@@ -49,7 +49,7 @@ const portfolioData = await import("../../content/portfolio.json");
                     >
                       <Icon
                         name={social.icon as IconName}
-                        class="text-foreground! h-7 w-7"
+                        class="text-foreground! group-hover:text-primary-foreground! h-7 w-7 transition-all duration-500"
                       />
                     </a>
                   </div>

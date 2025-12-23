@@ -4,6 +4,8 @@ import Header from "../components/ui/Header.astro";
 import portfolio from "../content/portfolio.json";
 import { Image } from "astro:assets";
 import Button from "../components/ui/Button.astro";
+import Icon from "../components/ui/Icon.astro";
+import Link2 from "@lucide/astro/icons/link-2";
 
 const images = import.meta.glob<{ default: ImageMetadata }>(
   "../assets/projects/*.{jpeg,jpg,png,gif}",
@@ -18,9 +20,9 @@ const { projects } = portfolio;
 >
   <Header />
   <main class="container mx-auto px-4 py-12">
-    <div class="mb-12">
-      <h1 class="text-4xl font-bold mb-4">Projects</h1>
-      <p class="text-lg text-gray-600 dark:text-gray-400">
+    <div class="mb-12 flex flex-col gap-2">
+      <h2 class="">Projects</h2>
+      <p class="text-foreground/90 text-lg">
         Here are some of the projects I've worked on.
       </p>
     </div>
@@ -29,66 +31,76 @@ const { projects } = portfolio;
       {
         projects.map((project) => {
           const imagePath = `../assets/projects/${project.image}`;
-          const imageSrc = images[imagePath]
-            ? images[imagePath]()
-            : null;
+          const imageSrc = images[imagePath] ? images[imagePath]() : null;
 
           return (
-            <article class="flex flex-col md:flex-row gap-8 items-start group">
-              <div class="w-full md:w-1/2 overflow-hidden rounded-xl shadow-lg transition-transform duration-500 hover:shadow-xl">
+            <article class="group border-border flex flex-col items-start gap-8 rounded-xl border p-5 shadow-lg md:flex-row">
+              <div class="w-full overflow-hidden rounded-xl shadow-lg transition-transform duration-500 hover:shadow-xl md:w-1/2">
                 {imageSrc ? (
-                   <div class="aspect-video w-full overflow-hidden bg-gray-100 dark:bg-gray-800">
-                    {/* @ts-ignore */}
-                     <Image
-                        src={imageSrc}
-                        alt={project.name}
-                        width={800}
-                        height={450}
-                        class="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
-                      />
-                   </div>
+                  <div class="aspect-video w-full overflow-hidden">
+                    <Image
+                      src={imageSrc}
+                      alt={project.name}
+                      width={800}
+                      height={450}
+                      class="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                    />
+                  </div>
                 ) : (
-                  <div class="aspect-video w-full flex items-center justify-center bg-gray-200 dark:bg-gray-700 text-gray-400">
+                  <div class="text-foreground bg-primary/10 flex aspect-video w-full items-center justify-center">
                     <span class="text-lg">Image not found</span>
                   </div>
                 )}
               </div>
 
-              <div class="w-full md:w-1/2 flex flex-col gap-4">
-                <h2 class="text-3xl font-bold">{project.name}</h2>
-                <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+              <div class="flex w-full flex-col gap-4 text-wrap md:w-1/2">
+                <h3>{project.name}</h3>
+
+                <p class="text-foreground/90 leading-relaxed">
                   {project.description}
                 </p>
-                
-                <div class="flex flex-wrap gap-4 my-2">
-                   {project.github_link && (
-                    <Button
-                      href={project.github_link}
-                      text="GitHub Repo"
-                      variant="outline"
-                      size="sm"
-                    />
-                  )}
-                  {project.deploy_link && (
-                    <Button
-                      href={project.deploy_link}
-                      text="Live Demo"
-                      variant="primary"
-                      size="sm"
-                    />
-                  )}
-                </div>
 
                 <div class="mt-auto pt-4">
-                  <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">
-                    Tech Stack
-                  </h3>
                   <div class="flex flex-wrap gap-2">
                     {project.tags.map((tag) => (
-                      <span class="px-3 py-1 text-sm font-medium rounded-full bg-primary/10 text-primary border border-primary/20">
-                        {tag}
+                      <span class="bg-primary/10 text-primary border-primary/20 flex items-center gap-1.5 rounded-full border px-3 py-1 text-sm font-medium">
+                        <Icon name={tag as any} class="h-4 w-4" />
+                        <small class="text-foreground font-semibold">
+                          {tag}
+                        </small>
                       </span>
                     ))}
+                  </div>
+                </div>
+
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center gap-3">
+                    {project.github_link && (
+                      <a
+                        href={project.github_link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="group relative"
+                        aria-label="GitHub Repo"
+                      >
+                        <Icon
+                          class="text-foreground! hover:text-primary! h-10 w-10 transition-all duration-500 hover:scale-130"
+                          name="github"
+                        />
+                      </a>
+                    )}
+
+                    {project.deploy_link && (
+                      <a
+                        href={project.deploy_link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="group relative"
+                        aria-label="Live Demo"
+                      >
+                        <Link2 class="text-foreground! hover:text-primary! h-10 w-10 transition-all duration-500 hover:scale-130" />
+                      </a>
+                    )}
                   </div>
                 </div>
               </div>
