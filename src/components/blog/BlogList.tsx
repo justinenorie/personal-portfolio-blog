@@ -21,7 +21,9 @@ interface BlogListProps {
 export default function BlogList({ posts }: BlogListProps) {
   const [search, setSearch] = useState("");
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
-  const [sortOrder, setSortOrder] = useState<"newest" | "oldest" | "a-z" | "z-a">("newest");
+  const [sortOrder, setSortOrder] = useState<
+    "newest" | "oldest" | "a-z" | "z-a"
+  >("newest");
 
   const allTags = useMemo(() => {
     const tags = new Set<string>();
@@ -39,14 +41,20 @@ export default function BlogList({ posts }: BlogListProps) {
           post.data.description.toLowerCase().includes(search.toLowerCase());
         const matchesTags =
           selectedTags.length === 0 ||
-          selectedTags.every((tag : any) => post.data.tags?.includes(tag));
+          selectedTags.some((tag) => post.data.tags?.includes(tag));
         return matchesSearch && matchesTags;
       })
       .sort((a, b) => {
         if (sortOrder === "newest") {
-          return new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime();
+          return (
+            new Date(b.data.pubDate).getTime() -
+            new Date(a.data.pubDate).getTime()
+          );
         } else if (sortOrder === "oldest") {
-          return new Date(a.data.pubDate).getTime() - new Date(b.data.pubDate).getTime();
+          return (
+            new Date(a.data.pubDate).getTime() -
+            new Date(b.data.pubDate).getTime()
+          );
         } else if (sortOrder === "a-z") {
           return a.data.title.localeCompare(b.data.title);
         } else {
@@ -57,7 +65,7 @@ export default function BlogList({ posts }: BlogListProps) {
 
   const toggleTag = (tag: string) => {
     setSelectedTags((prev: any) =>
-      prev.includes(tag) ? prev.filter((t: any) => t !== tag) : [...prev, tag]
+      prev.includes(tag) ? prev.filter((t: any) => t !== tag) : [...prev, tag],
     );
   };
 
@@ -67,50 +75,30 @@ export default function BlogList({ posts }: BlogListProps) {
   };
 
   return (
-    <div className="flex flex-col lg:flex-row gap-8">
+    <div className="flex flex-col gap-8 lg:flex-row">
       {/* Sidebar - Left Side */}
-      <aside className="w-full lg:w-1/4 flex flex-col gap-6">
+      <aside className="flex w-full flex-col gap-6 lg:w-1/4">
         {/* Search Bar */}
         <div className="relative">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-foreground/60 h-4 w-4" />
+          <Search className="text-foreground/60 absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2" />
           <input
             type="text"
             placeholder="Search blogs..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full pl-10 pr-4 py-2 rounded-lg border border-border text-foreground/60 bg-background focus:ring-2 focus:ring-primary focus:outline-none"
+            className="border-border text-foreground/60 bg-background focus:ring-primary w-full rounded-lg border py-2 pr-4 pl-10 focus:ring-2 focus:outline-none"
           />
         </div>
 
+        {/* Filter */}
         <div>
-          <h3 className="font-semibold mb-3 flex items-center gap-2">
-            <Tag className="h-4 w-4" /> Topics
-          </h3>
-          <div className="flex flex-wrap gap-2">
-            {allTags.map((tag) => (
-              <button
-                key={tag}
-                onClick={() => toggleTag(tag)}
-                className={`px-3 py-1 text-sm rounded-full transition-colors ${
-                  selectedTags.includes(tag)
-                    ? "bg-primary text-primary-foreground"
-                    : "bg-secondary hover:bg-secondary/80 text-secondary-foreground"
-                }`}
-              >
-                {tag}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        <div>
-           <h3 className="font-semibold mb-3 flex items-center gap-2">
+          <h3 className="mb-3 flex items-center gap-2 font-semibold">
             Sort By
           </h3>
           <select
             value={sortOrder}
             onChange={(e) => setSortOrder(e.target.value as any)}
-            className="w-full p-2 rounded-lg border border-border bg-background text-foreground/60"
+            className="border-border bg-background text-foreground/60 w-full rounded-lg border p-2"
           >
             <option value="newest">Newest First</option>
             <option value="oldest">Oldest First</option>
@@ -119,60 +107,87 @@ export default function BlogList({ posts }: BlogListProps) {
           </select>
         </div>
 
-        <div className="text-sm text-foreground/60 font-medium">
-          Showing {filteredPosts.length} posts
+        <div>
+          <p className="text-foreground/80">
+            Showing {filteredPosts.length} posts
+          </p>
+        </div>
+
+        {/* Tags */}
+        <div>
+          <h3 className="mb-3 flex items-center gap-2 font-semibold">
+            <Tag className="h-4 w-4" /> Tags
+          </h3>
+          <div className="flex flex-wrap gap-2">
+            {allTags.map((tag) => (
+              <button
+                key={tag}
+                onClick={() => toggleTag(tag)}
+                className={`rounded-full px-3 py-1 text-sm transition-colors ${
+                  selectedTags.includes(tag)
+                    ? "bg-primary text-primary-foreground"
+                    : "bg-primary/10 border-border text-foreground border"
+                }`}
+              >
+                {tag}
+              </button>
+            ))}
+          </div>
         </div>
       </aside>
 
       {/* Main Content - Right Side */}
-      <div className="w-full lg:w-3/4 flex flex-col gap-6">
+      <div className="flex w-full flex-col gap-6 lg:w-3/4">
         {filteredPosts.map((post) => (
           <a
             key={post.id}
             href={`/blog/${post.id}/`}
-            className="group flex flex-col md:flex-row gap-6 p-4 rounded-xl border border-transparent hover:border-border hover:bg-secondary/10 transition-all duration-300"
+            className="group hover:border-border hover:bg-primary/10 flex flex-col gap-6 rounded-xl border border-transparent p-4 transition-all duration-300 md:flex-row"
           >
-            <div className="flex-1 flex flex-col justify-center">
-              <h2 className="text-2xl font-bold mb-2 group-hover:text-primary transition-colors">
+            <div className="flex flex-1 flex-col justify-center">
+              <h2 className="group-hover:text-primary mb-2 text-2xl font-bold transition-colors">
                 {post.data.title}
               </h2>
-              <p className="text-gray-600 dark:text-gray-300 mb-4">
+              <p className="text-foreground/80 mb-4">
                 {truncateDescription(post.data.description)}
               </p>
-              
-              <div className="flex items-center gap-4 text-sm text-gray-500">
+
+              <div className="text-foreground/80 flex items-center gap-4 text-sm">
                 <span className="flex items-center gap-1">
-                   <Calendar className="h-4 w-4" />
-                   {new Date(post.data.pubDate).toLocaleDateString()}
+                  <Calendar className="h-4 w-4" />
+                  {new Date(post.data.pubDate).toLocaleDateString()}
                 </span>
-                 <span className="flex items-center gap-1">
-                   <Clock className="h-4 w-4" />
-                   {post.readingTime}
+                <span className="flex items-center gap-1">
+                  <Clock className="h-4 w-4" />
+                  {post.readingTime}
                 </span>
               </div>
-              
-               {post.data.tags && (
-                <div className="flex flex-wrap gap-2 mt-3">
+
+              {post.data.tags && (
+                <div className="mt-3 flex flex-wrap gap-2">
                   {post.data.tags.slice(0, 3).map((tag) => (
-                    <span key={tag} className="text-xs px-2 py-1 bg-secondary rounded-md">
-                      #{tag}
-                    </span>
+                    <small
+                      key={tag}
+                      className="text-foreground bg-primary/10 border-border rounded-md border px-2 py-1"
+                    >
+                      # {tag}
+                    </small>
                   ))}
                 </div>
               )}
             </div>
 
-            <div className="w-full md:w-48 h-32 shrink-0 overflow-hidden rounded-lg">
+            <div className="h-32 w-full shrink-0 overflow-hidden rounded-lg md:w-48">
               {post.data.heroImage ? (
                 <img
                   src={post.data.heroImage.src}
                   alt={post.data.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   loading="lazy"
                 />
               ) : (
-                <div className="w-full h-full bg-secondary flex items-center justify-center text-gray-400">
-                   <span className="text-xs">No Image</span>
+                <div className="bg-border/80 text-foreground/80 flex h-full w-full items-center justify-center">
+                  <span className="text-xs">No Image</span>
                 </div>
               )}
             </div>
@@ -180,7 +195,7 @@ export default function BlogList({ posts }: BlogListProps) {
         ))}
 
         {filteredPosts.length === 0 && (
-          <div className="text-center py-12 text-gray-500">
+          <div className="text-foreground/80 py-12 text-center">
             No posts found matching your criteria.
           </div>
         )}

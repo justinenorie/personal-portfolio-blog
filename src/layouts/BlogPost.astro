@@ -28,7 +28,7 @@ const {
     <article class="mx-auto max-w-7xl">
       {/* 1. Hero Image at the Top */}
       <div
-        class="bg-secondary/20 mb-8 aspect-video w-full overflow-hidden rounded-2xl md:aspect-21/9"
+        class="bg-primary/20 mb-8 aspect-video w-full overflow-hidden rounded-2xl md:aspect-21/9"
       >
         {
           heroImage && (
@@ -51,15 +51,15 @@ const {
             <h1 class="mb-4 text-4xl leading-tight font-bold md:text-5xl">
               {title}
             </h1>
-            <p class="mb-6 text-xl text-gray-600 dark:text-gray-300">
+            <p class="text-foreground/80 mb-6 text-xl">
               {description}
             </p>
 
             <div
-              class="flex flex-wrap items-center gap-6 text-sm font-medium text-gray-500"
+              class="text-foreground/80 flex flex-wrap items-center gap-6 text-sm font-medium"
             >
               <div class="flex items-center gap-2">
-                <span class="sr-only">Published on</span>
+                <span>Published on</span>
                 <FormattedDate date={pubDate} />
               </div>
               {
@@ -88,9 +88,7 @@ const {
 
         {/* Right Sidebar - Table of Contents */}
         <aside class="hidden xl:block">
-          <div
-            class="sticky top-24 max-h-[calc(100vh-8rem)] overflow-y-auto pt-2"
-          >
+          <div class="sticky top-24 max-h-[calc(100vh-8rem)] overflow-y-auto">
             {
               headings && headings.length > 0 && (
                 <div>
@@ -98,12 +96,12 @@ const {
                     On this page
                   </h2>
                   <nav class="toc">
-                    <ul class="border-border flex flex-col border-l text-[13px]">
+                    <ul class="border-border flex flex-col text-[13px]">
                       {headings.map((heading) => (
                         <li class="relative">
                           <a
                             href={`#${heading.slug}`}
-                            class={`toc-link hover:text-primary line-clamp-2 block border-l-2 py-2 pr-2 transition-all duration-200 ${
+                            class={`toc-link hover:text-primary line-clamp-2 block border-l-3 py-2 pr-2 transition-all duration-200 ${
                               heading.depth === 2
                                 ? "pl-4"
                                 : heading.depth === 3
@@ -134,42 +132,44 @@ const {
     (entries) => {
       entries.forEach((entry) => {
         const id = entry.target.getAttribute("id");
-        if (entry.intersectionRatio > 0) {
-          const links = document.querySelectorAll(`.toc-link[href="#${id}"]`);
+        const links = document.querySelectorAll(`.toc-link[href="#${id}"]`);
 
-          if (links.length > 0) {
-            // 1. Reset all links to inactive state
-            document.querySelectorAll(".toc-link").forEach((link) => {
-              link.classList.remove(
-                "border-primary",
-                "text-primary",
-                "font-medium",
-              );
-              link.classList.add("border-transparent");
-            });
-
-            // 2. Set the current link to active state
+        if (links.length > 0) {
+          if (entry.isIntersecting) {
+            // Add active state when header is visible
             links.forEach((link) => {
               link.classList.remove(
                 "border-transparent",
                 "text-muted-foreground",
+                "bg-transparent",
               );
               link.classList.add(
                 "border-primary",
+                "bg-primary/10",
                 "text-primary",
                 "font-medium",
               );
+            });
+          } else {
+            links.forEach((link) => {
+              link.classList.remove(
+                "border-primary",
+                "bg-primary/10",
+                "text-primary",
+                "font-medium",
+              );
+              link.classList.add("border-transparent", "bg-transparent");
             });
           }
         }
       });
     },
-    { rootMargin: "0px 0px -80% 0px" },
+    { rootMargin: "0px 0px 0px 0px" },
   );
 
   // Track all headers that have an ID
   document
-    .querySelectorAll("h1[id], h2[id], h3[id], h4[id]")
+    .querySelectorAll("h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]")
     .forEach((section) => {
       observer.observe(section);
     });
